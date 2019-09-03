@@ -31,3 +31,15 @@ function exhaustiveHandleAction(action: Actions) {
             return assertNever(action);
     }
 }
+
+function handleAction2(action: Actions): string {
+    switch (action.type) {
+        case "INIT":
+            return "Initialized";
+        case "LOGIN":
+            console.log(action.name + " logged in");
+            return "Logged In"
+        default:
+            console.log("WTF");
+    }
+}

@@ -11,6 +11,13 @@ let h: string | number;
 h = "hello";
 h = 42;
 
+type Period = "am" | "pm"
+
+type Workdays = "Mon" | "Tue" | "Wed" | "Thu" | "Fri";
+type Weekdays = Workdays | "Sat" | "Sun";
+
+type MyBoolean = true | false; // MyBoolean = boolean
+
 // associativity
 type x = number | never; // x = number
 
