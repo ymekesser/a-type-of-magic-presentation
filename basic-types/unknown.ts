@@ -1,13 +1,14 @@
-type Point = { x: number, y: number };
+type Duck = { walkSpeed: number, quack: () => string };
 
-function isPoint(thing: unknown): thing is Point {
-    return (thing as Point).x !== undefined && (thing as Point).y !== undefined;
+function isDuck(thing: unknown): thing is Duck {
+    return typeof (thing as Duck).walkSpeed === "number"
+        && typeof (thing as Duck).quack === "function";
 }
 
-function tryGetProduct(value: unknown): number | undefined {
-    if (isPoint(value)) {
-        return value.x * value.y;
+function tryQuack(x: unknown) {
+    if (isDuck(x)) {
+        return x.quack();
     }
 
-    return undefined;
+    console.log("Wasn't a duck, sorry.")
 }
