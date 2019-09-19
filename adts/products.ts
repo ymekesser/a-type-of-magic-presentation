@@ -17,8 +17,8 @@ p1 = { fst: p2.fst.fst, snd: { fst: p2.fst.snd, snd: p2.snd } };
 let t1: [A, [B, C]] = ["A", ["B", "C"]];
 let t2: [[A, B], C] = [["A", "B"], "C"];
 
-const woosh = ([a, [b, c]) => [[a, b], c];
-const woosh_inv = ([[a, b], c]) => [a, [b, c]];
+const woosh = ([a, [b, c]]: [A, [B, C]]) => [[a, b], c];
+const woosh_inv = ([[a, b], c]: [[A, B], C]) => [a, [b, c]];
 
 t1 = [t2[0][0], [t2[0][1], t2[1]]];
 t2 = [[t1[0], t1[1][0]], t1[1][1]];
