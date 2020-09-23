@@ -1,15 +1,22 @@
+// Structural type equality
+() => {
 
-declare function printName(p: Person): string;
-{
+    type A = { foo: string };
+    type B = { foo: string };
+
+    const a: A = { foo: "bar" }
+    const b: B = a; // no compile error, type A is equal to B
+
     type Person = { name: string }
     type Contact = { phone: string }
-
     type PersonWithContact = {
         name: string;
         phone: string;
     }
 
-    declare function call(c: Contact): boolean;
+    function call(c: Contact): boolean { 
+        return true
+    };
 
     var personWithContact = {
         name: "JoJo",
@@ -17,18 +24,11 @@ declare function printName(p: Person): string;
     }
 
     call(personWithContact);
-    
-    type Foo = { name: string }
-    type Bar = { name: string }
+}
 
-    let foo: Foo = { name: "JoJo" };
-    let bar: Bar = foo; // OK
 
-    type Point = {
-        x: number;
-        y: number;
-    }
-
+// Basic Types
+() => {
 
     let u; // undefined
 
@@ -39,10 +39,13 @@ declare function printName(p: Person): string;
     const y = 5;
 
     let c: any = "foo";
+    c.someFunction();
     let d: number = c;
 
     let e: unknown = 42;
+    e.toString() // Error
     let f: string = e; // Error
 
     let g: never = ({} as any); // Error
+
 }
