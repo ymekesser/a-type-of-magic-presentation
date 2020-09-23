@@ -1,4 +1,5 @@
-{
+// Without opaque types
+() => {
     type Username = string;
     type Password = string;
 
@@ -8,7 +9,9 @@
 
     displayUserName(pw); // valid, but not what we want
 }
-{
+
+// With opaque types
+() => {
     type Username = string & { type: "Username" };
     type Password = string & { type: "Password" };
 
@@ -18,7 +21,10 @@
 
     displayUserName(pw); // compiler prevents us from misusing sensitive data
 }
-{
+
+
+// With mapped types
+() => {
     type Opaque<K, T> = T & {_type: K};
 
     type Username = Opaque<"Username", string>;
