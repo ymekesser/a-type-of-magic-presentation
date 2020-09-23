@@ -1,13 +1,13 @@
-{
-    type List<T> = { head: T, tail: List<T> };
+// Simple applications
+() => {
+    type Either<A, B> = Sum<A, B>;
 
-    type Leaf<T> = { kind: "leaf", value: T };
-    type Node<T> = { kind: "node", element: T, left: Tree<T>, right: Tree<T> };
-    type Tree<T> = Leaf<T> | Node<T>;
+    type List<T> = Either<"Empty", { head: T, tail: List<T> }>; // Empty + (Head x Tail)
 
-    type Success = { status: "success", value: string, correlationId: number };
-    type Failure = { status: "failure", error: string };
-    type Response = Success | Failure;
+
+    type Success = { value: string, correlationId: number };
+    type Failure = { error: string };
+    type Response = { type: "success", value: Success } | { type: "failure", value: Failure };
 }
 
 {
